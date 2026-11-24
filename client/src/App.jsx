@@ -2,12 +2,15 @@ import React from 'react';
 import { Sidebar } from './components/Sidebar';
 import { Header } from './components/Header';
 import { GlobalSearchModal } from './components/GlobalSearchModal';
+import { PrintableCostSheetModal } from './components/PrintableCostSheetModal';
 import { DashboardPage } from './pages/DashboardPage';
 import { ProductsPage } from './pages/ProductsPage';
 import { RawMaterialsPage } from './pages/RawMaterialsPage';
 import { SuppliersPage } from './pages/SuppliersPage';
 import { InventoryPage } from './pages/InventoryPage';
 import { ProductionPage } from './pages/ProductionPage';
+import { BomStudioPage } from './pages/BomStudioPage';
+import { QualityControlPage } from './pages/QualityControlPage';
 import { CostCalculationPage } from './pages/CostCalculationPage';
 import { SalesPage } from './pages/SalesPage';
 import { ReportsPage } from './pages/ReportsPage';
@@ -16,7 +19,7 @@ import { useApp } from './context/AppContext';
 import { CheckCircle2, AlertTriangle } from 'lucide-react';
 
 function AppContent() {
-  const { activeTab, toast } = useApp();
+  const { activeTab, toast, isCostSheetOpen, setIsCostSheetOpen } = useApp();
 
   const renderActivePage = () => {
     switch (activeTab) {
@@ -26,6 +29,8 @@ function AppContent() {
         return <ProductsPage />;
       case 'raw-materials':
         return <RawMaterialsPage />;
+      case 'bom-studio':
+        return <BomStudioPage />;
       case 'suppliers':
         return <SuppliersPage />;
       case 'inventory':
@@ -34,6 +39,8 @@ function AppContent() {
       case 'production-orders':
       case 'production-lines':
         return <ProductionPage />;
+      case 'quality-control':
+        return <QualityControlPage />;
       case 'cost-calculation':
         return <CostCalculationPage />;
       case 'sales':
@@ -63,6 +70,12 @@ function AppContent() {
 
       {/* Global Search Modal */}
       <GlobalSearchModal />
+
+      {/* Printable Cost Audit Sheet Modal */}
+      <PrintableCostSheetModal
+        isOpen={isCostSheetOpen}
+        onClose={() => setIsCostSheetOpen(false)}
+      />
 
       {/* Real-time Toast Notifications */}
       {toast && (

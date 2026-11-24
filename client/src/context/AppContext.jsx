@@ -9,6 +9,7 @@ export const AppProvider = ({ children }) => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
   const [notificationCount, setNotificationCount] = useState(3);
+  const [isCostSheetOpen, setIsCostSheetOpen] = useState(false);
   
   // Real-time toast notifications
   const [toast, setToast] = useState(null);
@@ -45,6 +46,8 @@ export const AppProvider = ({ children }) => {
         setIsNotificationsOpen,
         notificationCount,
         setNotificationCount,
+        isCostSheetOpen,
+        setIsCostSheetOpen,
         toast,
         showToast,
       }}

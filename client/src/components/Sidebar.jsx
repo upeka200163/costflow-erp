@@ -13,6 +13,8 @@ import {
   ChevronDown,
   Droplets,
   Building2,
+  Layers,
+  ShieldCheck,
 } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 
@@ -24,6 +26,7 @@ export const Sidebar = () => {
     { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
     { id: 'products', label: 'Products', icon: Package },
     { id: 'raw-materials', label: 'Raw Materials', icon: Boxes },
+    { id: 'bom-studio', label: 'BOM & Recipes', icon: Layers, isNew: true },
     { id: 'suppliers', label: 'Suppliers', icon: Users },
     { id: 'inventory', label: 'Inventory', icon: Warehouse },
     {
@@ -32,10 +35,11 @@ export const Sidebar = () => {
       icon: Factory,
       hasSubmenu: true,
       subItems: [
-        { id: 'production-orders', label: 'Active Runs' },
+        { id: 'production', label: 'Production Kanban' },
         { id: 'production-lines', label: 'Bottling Lines' },
       ],
     },
+    { id: 'quality-control', label: 'Quality Control', icon: ShieldCheck, isNew: true },
     { id: 'cost-calculation', label: 'Cost Calculation', icon: Calculator },
     { id: 'sales', label: 'Sales & Distribution', icon: Truck },
     { id: 'reports', label: 'Reports', icon: FileBarChart2 },
@@ -84,13 +88,20 @@ export const Sidebar = () => {
                   <Icon className={`w-4 h-4 transition-transform group-hover:scale-110 ${isActive ? 'text-white' : 'text-slate-400'}`} />
                   <span>{item.label}</span>
                 </div>
-                {item.hasSubmenu && (
-                  <ChevronDown
-                    className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                      isProductionExpanded ? 'rotate-180 text-white' : 'text-slate-400'
-                    }`}
-                  />
-                )}
+                <div className="flex items-center gap-1.5">
+                  {item.isNew && (
+                    <span className="text-[9px] font-extrabold uppercase bg-emerald-500/20 text-emerald-400 px-1.5 py-0.5 rounded-md">
+                      New
+                    </span>
+                  )}
+                  {item.hasSubmenu && (
+                    <ChevronDown
+                      className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                        isProductionExpanded ? 'rotate-180 text-white' : 'text-slate-400'
+                      }`}
+                    />
+                  )}
+                </div>
               </button>
 
               {/* Submenu for Production */}
@@ -119,8 +130,8 @@ export const Sidebar = () => {
             <Building2 className="w-5 h-5" />
           </div>
           <div className="overflow-hidden">
-            <h4 className="text-white text-xs font-semibold leading-snug">Water Factory</h4>
-            <p className="text-[10px] text-slate-400 font-mono">v1.0.0</p>
+            <h4 className="text-white text-xs font-semibold leading-snug">Water Factory #1</h4>
+            <p className="text-[10px] text-slate-400 font-mono">v1.2.0 • ISO 22000</p>
           </div>
         </div>
       </div>

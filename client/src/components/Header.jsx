@@ -1,5 +1,19 @@
-import React from 'react';
-import { Search, Bell, Check, Clock, AlertTriangle, AlertCircle, Info } from 'lucide-react';
+import React, { useState } from 'react';
+import {
+  Search,
+  Bell,
+  Check,
+  Clock,
+  AlertTriangle,
+  AlertCircle,
+  Info,
+  Plus,
+  Zap,
+  Printer,
+  FlaskConical,
+  Boxes,
+  Factory,
+} from 'lucide-react';
 import { useApp } from '../context/AppContext';
 
 export const Header = () => {
@@ -10,7 +24,11 @@ export const Header = () => {
     notificationCount,
     setNotificationCount,
     setActiveTab,
+    setIsCostSheetOpen,
+    showToast,
   } = useApp();
+
+  const [isQuickActionsOpen, setIsQuickActionsOpen] = useState(false);
 
   const mockNotifications = [
     {
@@ -45,7 +63,7 @@ export const Header = () => {
   return (
     <header className="h-16 px-8 flex items-center justify-between border-b border-slate-200/80 bg-white/70 backdrop-blur-md sticky top-0 z-10">
       {/* Global Search Bar */}
-      <div className="relative w-96">
+      <div className="relative w-80 sm:w-96">
         <button
           onClick={() => setIsSearchOpen(true)}
           className="w-full flex items-center justify-between px-3.5 py-2 text-xs font-normal text-slate-400 bg-slate-100/90 hover:bg-slate-100 rounded-xl border border-slate-200/60 transition-all focus:outline-none focus:ring-2 focus:ring-blue-500/20"
@@ -60,8 +78,79 @@ export const Header = () => {
         </button>
       </div>
 
-      {/* Right Controls: Notifications & User Profile */}
-      <div className="flex items-center gap-5">
+      {/* Right Controls: Quick Actions + Notifications + Profile */}
+      <div className="flex items-center gap-4">
+        {/* Quick Actions Dropdown Button */}
+        <div className="relative">
+          <button
+            onClick={() => setIsQuickActionsOpen(!isQuickActionsOpen)}
+            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-xl shadow-md shadow-blue-500/20 transition-all hover:shadow-lg"
+          >
+            <Plus className="w-3.5 h-3.5 stroke-[2.5]" />
+            <span>Quick Action</span>
+          </button>
+
+          {isQuickActionsOpen && (
+            <div className="absolute right-0 mt-3 w-64 bg-white rounded-2xl shadow-xl border border-slate-100 p-2 z-30 animate-in fade-in slide-in-from-top-2 duration-150 text-xs">
+              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider px-3 py-1.5 block">
+                Factory Shortcuts
+              </span>
+
+              <button
+                onClick={() => {
+                  setActiveTab('production');
+                  setIsQuickActionsOpen(false);
+                }}
+                className="w-full text-left p-2 hover:bg-slate-50 rounded-xl flex items-center gap-2.5 font-semibold text-slate-700 transition-colors"
+              >
+                <div className="p-1 rounded-lg bg-blue-50 text-blue-600">
+                  <Factory className="w-3.5 h-3.5" />
+                </div>
+                <span>Schedule Work Order</span>
+              </button>
+
+              <button
+                onClick={() => {
+                  setActiveTab('quality-control');
+                  setIsQuickActionsOpen(false);
+                }}
+                className="w-full text-left p-2 hover:bg-slate-50 rounded-xl flex items-center gap-2.5 font-semibold text-slate-700 transition-colors"
+              >
+                <div className="p-1 rounded-lg bg-emerald-50 text-emerald-600">
+                  <FlaskConical className="w-3.5 h-3.5" />
+                </div>
+                <span>Log Laboratory QC Test</span>
+              </button>
+
+              <button
+                onClick={() => {
+                  setActiveTab('bom-studio');
+                  setIsQuickActionsOpen(false);
+                }}
+                className="w-full text-left p-2 hover:bg-slate-50 rounded-xl flex items-center gap-2.5 font-semibold text-slate-700 transition-colors"
+              >
+                <div className="p-1 rounded-lg bg-purple-50 text-purple-600">
+                  <Zap className="w-3.5 h-3.5" />
+                </div>
+                <span>BOM Recipe Studio</span>
+              </button>
+
+              <button
+                onClick={() => {
+                  setIsCostSheetOpen(true);
+                  setIsQuickActionsOpen(false);
+                }}
+                className="w-full text-left p-2 hover:bg-slate-50 rounded-xl flex items-center gap-2.5 font-semibold text-slate-700 transition-colors border-t border-slate-100 mt-1"
+              >
+                <div className="p-1 rounded-lg bg-amber-50 text-amber-600">
+                  <Printer className="w-3.5 h-3.5" />
+                </div>
+                <span>Print Official Cost Sheet</span>
+              </button>
+            </div>
+          )}
+        </div>
+
         {/* Notifications Bell */}
         <div className="relative">
           <button
@@ -123,7 +212,6 @@ export const Header = () => {
           <div className="relative">
             <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-blue-600 to-indigo-500 p-0.5 shadow-sm">
               <div className="w-full h-full rounded-full bg-white flex items-center justify-center font-bold text-blue-600 text-xs overflow-hidden">
-                {/* Avatar illustration / photo */}
                 <svg viewBox="0 0 40 40" className="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <rect width="40" height="40" fill="#E2E8F0" />
                   <circle cx="20" cy="15" r="7" fill="#64748B" />
