@@ -187,18 +187,16 @@ export const ProductionPage = () => {
           <div className="flex items-center bg-white border border-slate-200/80 rounded-2xl p-1 shadow-xs">
             <button
               onClick={() => setViewMode('kanban')}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
-                viewMode === 'kanban' ? 'bg-blue-600 text-white shadow-xs' : 'text-slate-500 hover:text-slate-900'
-              }`}
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${viewMode === 'kanban' ? 'bg-blue-600 text-white shadow-xs' : 'text-slate-500 hover:text-slate-900'
+                }`}
             >
               <Kanban className="w-3.5 h-3.5" />
               <span>Kanban Board</span>
             </button>
             <button
               onClick={() => setViewMode('lines')}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
-                viewMode === 'lines' ? 'bg-blue-600 text-white shadow-xs' : 'text-slate-500 hover:text-slate-900'
-              }`}
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${viewMode === 'lines' ? 'bg-blue-600 text-white shadow-xs' : 'text-slate-500 hover:text-slate-900'
+                }`}
             >
               <LayoutList className="w-3.5 h-3.5" />
               <span>Bottling Lines</span>
@@ -274,11 +272,10 @@ export const ProductionPage = () => {
                         <div className="flex items-start justify-between">
                           <span className="text-[11px] font-mono font-bold text-blue-600">#{ord.id}</span>
                           <span
-                            className={`text-[10px] font-bold px-2 py-0.5 rounded-md ${
-                              ord.priority === 'High'
-                                ? 'bg-rose-50 text-rose-600 border border-rose-200/60'
-                                : 'bg-slate-100 text-slate-600'
-                            }`}
+                            className={`text-[10px] font-bold px-2 py-0.5 rounded-md ${ord.priority === 'High'
+                              ? 'bg-rose-50 text-rose-600 border border-rose-200/60'
+                              : 'bg-slate-100 text-slate-600'
+                              }`}
                           >
                             {ord.priority}
                           </span>

@@ -10,7 +10,28 @@ export const AppProvider = ({ children }) => {
   const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
   const [notificationCount, setNotificationCount] = useState(3);
   const [isCostSheetOpen, setIsCostSheetOpen] = useState(false);
-  
+
+  // User Profile & Account State
+  const [currentUser, setCurrentUser] = useState({
+    name: 'Ahmed Mohamed',
+    title: 'Factory Manager',
+    email: 'ahmed.mohamed@waterfactory.eg',
+    phone: '+20 10 1234 5678',
+    employeeId: 'EMP-4892',
+    department: 'Plant Operations & Manufacturing',
+    plant: '10th Industrial Zone Plant #1 (Cairo)',
+    role: 'Factory Manager',
+    shift: 'Shift A (07:00 - 15:30)',
+    twoFactorEnabled: true,
+    emailAlerts: true,
+    isLoggedIn: true,
+  });
+
+  // Account Modals State
+  const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
+  const [isAccountSettingsOpen, setIsAccountSettingsOpen] = useState(false);
+  const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
+
   // Real-time toast notifications
   const [toast, setToast] = useState(null);
 
@@ -19,6 +40,46 @@ export const AppProvider = ({ children }) => {
     setTimeout(() => {
       setToast(null);
     }, 3500);
+  };
+
+  const updateUserProfile = (updatedData) => {
+    setCurrentUser((prev) => ({
+      ...prev,
+      ...updatedData,
+    }));
+    showToast('Profile information updated successfully!');
+  };
+
+  const switchRole = (newRole, newTitle) => {
+    setCurrentUser((prev) => ({
+      ...prev,
+      role: newRole,
+      title: newTitle || newRole,
+    }));
+    showToast(`Switched account role to ${newRole}`);
+  };
+
+  const switchPlant = (plantName) => {
+    setCurrentUser((prev) => ({
+      ...prev,
+      plant: plantName,
+    }));
+    showToast(`Switched active facility to ${plantName}`);
+  };
+
+  const handleLogout = () => {
+    setCurrentUser((prev) => ({ ...prev, isLoggedIn: false }));
+    setIsLogoutModalOpen(false);
+    showToast('You have been logged out of CostFlow ERP.', 'info');
+  };
+
+  const handleLogin = (userOverride = null) => {
+    setCurrentUser((prev) => ({
+      ...prev,
+      ...(userOverride || {}),
+      isLoggedIn: true,
+    }));
+    showToast('Welcome back! Signed in as Ahmed Mohamed.');
   };
 
   // Keyboard shortcut Ctrl+K / Cmd+K for global search
@@ -48,6 +109,18 @@ export const AppProvider = ({ children }) => {
         setNotificationCount,
         isCostSheetOpen,
         setIsCostSheetOpen,
+        currentUser,
+        updateUserProfile,
+        switchRole,
+        switchPlant,
+        handleLogout,
+        handleLogin,
+        isProfileModalOpen,
+        setIsProfileModalOpen,
+        isAccountSettingsOpen,
+        setIsAccountSettingsOpen,
+        isLogoutModalOpen,
+        setIsLogoutModalOpen,
         toast,
         showToast,
       }}

@@ -3,6 +3,9 @@ import { Sidebar } from './components/Sidebar';
 import { Header } from './components/Header';
 import { GlobalSearchModal } from './components/GlobalSearchModal';
 import { PrintableCostSheetModal } from './components/PrintableCostSheetModal';
+import { ProfileModal } from './components/ProfileModal';
+import { AccountSettingsModal } from './components/AccountSettingsModal';
+import { LogoutModal, SessionLockOverlay } from './components/LogoutModal';
 import { DashboardPage } from './pages/DashboardPage';
 import { ProductsPage } from './pages/ProductsPage';
 import { RawMaterialsPage } from './pages/RawMaterialsPage';
@@ -16,10 +19,21 @@ import { SalesPage } from './pages/SalesPage';
 import { ReportsPage } from './pages/ReportsPage';
 import { SettingsPage } from './pages/SettingsPage';
 import { useApp } from './context/AppContext';
-import { CheckCircle2, AlertTriangle } from 'lucide-react';
+import { CheckCircle2, AlertTriangle, Info } from 'lucide-react';
 
 function AppContent() {
-  const { activeTab, toast, isCostSheetOpen, setIsCostSheetOpen } = useApp();
+  const {
+    activeTab,
+    toast,
+    isCostSheetOpen,
+    setIsCostSheetOpen,
+    isProfileModalOpen,
+    setIsProfileModalOpen,
+    isAccountSettingsOpen,
+    setIsAccountSettingsOpen,
+    isLogoutModalOpen,
+    setIsLogoutModalOpen,
+  } = useApp();
 
   const renderActivePage = () => {
     switch (activeTab) {
@@ -68,14 +82,31 @@ function AppContent() {
         </main>
       </div>
 
-      {/* Global Search Modal */}
+      {/* Global Modals */}
       <GlobalSearchModal />
 
-      {/* Printable Cost Audit Sheet Modal */}
       <PrintableCostSheetModal
         isOpen={isCostSheetOpen}
         onClose={() => setIsCostSheetOpen(false)}
       />
+
+      <ProfileModal
+        isOpen={isProfileModalOpen}
+        onClose={() => setIsProfileModalOpen(false)}
+      />
+
+      <AccountSettingsModal
+        isOpen={isAccountSettingsOpen}
+        onClose={() => setIsAccountSettingsOpen(false)}
+      />
+
+      <LogoutModal
+        isOpen={isLogoutModalOpen}
+        onClose={() => setIsLogoutModalOpen(false)}
+      />
+
+      {/* Session Lock / Logout Overlay */}
+      <SessionLockOverlay />
 
       {/* Real-time Toast Notifications */}
       {toast && (
@@ -83,6 +114,8 @@ function AppContent() {
           <div className="bg-slate-900 text-white px-4 py-3 rounded-2xl shadow-2xl flex items-center gap-3 border border-slate-700/80 text-xs font-semibold">
             {toast.type === 'error' ? (
               <AlertTriangle className="w-4 h-4 text-rose-400" />
+            ) : toast.type === 'info' ? (
+              <Info className="w-4 h-4 text-sky-400" />
             ) : (
               <CheckCircle2 className="w-4 h-4 text-emerald-400" />
             )}
