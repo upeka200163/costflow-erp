@@ -183,4 +183,16 @@ export const api = {
     });
     return res.json();
   },
+
+  // Database Overview & Diagnostics
+  async getDatabaseOverview() {
+    try {
+      const res = await fetch(`${API_BASE}/database`);
+      if (!res.ok) throw new Error('API request failed');
+      return await res.json();
+    } catch (e) {
+      console.warn('Using fallback database overview:', e);
+      return null;
+    }
+  },
 };

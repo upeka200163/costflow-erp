@@ -27,6 +27,64 @@ app.use('/api/suppliers', require('./routes/supplierRoutes'));
 app.use('/api/production', require('./routes/productionRoutes'));
 app.use('/api/calculation', require('./routes/calculationRoutes'));
 
+// Database Overview & Inspector endpoint
+app.get('/api/database', async (req, res) => {
+  try {
+    const Product = require('./models/Product');
+    const RawMaterial = require('./models/RawMaterial');
+    const Supplier = require('./models/Supplier');
+    const ProductionOrder = require('./models/ProductionOrder');
+    const Activity = require('./models/Activity');
+    const Alert = require('./models/Alert');
+    const { getStatus } = require('./config/dbAdapter');
+
+    const [products, materials, suppliers, orders, activities, alerts] = await Promise.all([
+      Product.find({}),
+      RawMaterial.find({}),
+      Supplier.find({}),
+      ProductionOrder.find({}),
+      Activity.find({}),
+      Alert.find({}),
+    ]);
+
+    res.json({
+      database: 'costflow',
+      connectedToMongo: getStatus(),
+      connectionType: getStatus()
+        ? 'MongoDB (Atlas / Local MongoDB)'
+        : 'Universal In-Memory Document Store (Demo Mode)',
+      collections: {
+        products: {
+          count: products.length,
+          data: products,
+        },
+        rawmaterials: {
+          count: materials.length,
+          data: materials,
+        },
+        suppliers: {
+          count: suppliers.length,
+          data: suppliers,
+        },
+        productionorders: {
+          count: orders.length,
+          data: orders,
+        },
+        activities: {
+          count: activities.length,
+          data: activities,
+        },
+        alerts: {
+          count: alerts.length,
+          data: alerts,
+        },
+      },
+    });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 // Health check endpoint for Render / monitoring
 app.get('/api/health', (req, res) => {
   res.json({
