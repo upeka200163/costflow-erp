@@ -3,6 +3,7 @@ import { X, Printer, Droplets, CheckCircle, Award } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 
 export const PrintableCostSheetModal = ({ isOpen, onClose }) => {
+  const { currentUser } = useApp();
   if (!isOpen) return null;
 
   const handlePrint = () => {
@@ -156,8 +157,8 @@ export const PrintableCostSheetModal = ({ isOpen, onClose }) => {
           <div className="space-y-6">
             <span className="text-slate-400 block">Prepared By:</span>
             <div className="border-b border-slate-300 pb-1">
-              <span className="font-bold text-slate-900 block">Ahmed Mohamed</span>
-              <span className="text-slate-400 text-[11px]">Factory Operations Manager</span>
+              <span className="font-bold text-slate-900 block">{currentUser?.name || 'Ahmed Mohamed'}</span>
+              <span className="text-slate-400 text-[11px]">{currentUser?.title || 'Factory Operations Manager'}</span>
             </div>
           </div>
 

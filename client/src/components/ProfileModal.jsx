@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import {
   X,
   User,
@@ -62,6 +62,23 @@ export const ProfileModal = ({ isOpen, onClose }) => {
   const [previewPhoto, setPreviewPhoto] = useState(currentUser.avatarUrl);
   const [isPhotoPickerOpen, setIsPhotoPickerOpen] = useState(false);
   const fileInputRef = useRef(null);
+
+  // Synchronize form state whenever modal is opened or currentUser updates
+  useEffect(() => {
+    if (isOpen) {
+      setFormData({
+        name: currentUser.name,
+        title: currentUser.title,
+        email: currentUser.email,
+        phone: currentUser.phone,
+        employeeId: currentUser.employeeId,
+        department: currentUser.department,
+        shift: currentUser.shift,
+        plant: currentUser.plant,
+      });
+      setPreviewPhoto(currentUser.avatarUrl);
+    }
+  }, [isOpen, currentUser]);
 
   if (!isOpen) return null;
 
@@ -169,10 +186,10 @@ export const ProfileModal = ({ isOpen, onClose }) => {
               {/* User Info & Quick Photo Actions */}
               <div className="min-w-0 flex-1">
                 <div className="flex items-center gap-1.5">
-                  <h4 className="text-sm font-bold text-slate-900 truncate">{currentUser.name}</h4>
+                  <h4 className="text-sm font-bold text-slate-900 truncate">{formData.name || currentUser.name}</h4>
                   <BadgeCheck className="w-4 h-4 text-blue-600 shrink-0" />
                 </div>
-                <p className="text-slate-500 font-medium">{currentUser.title}</p>
+                <p className="text-slate-500 font-medium">{formData.title || currentUser.title}</p>
                 
                 <div className="flex items-center gap-2 mt-2">
                   <button

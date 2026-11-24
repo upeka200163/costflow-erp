@@ -43,6 +43,13 @@ export const Header = () => {
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const userMenuRef = useRef(null);
 
+  const getInitials = (name) => {
+    if (!name) return 'AM';
+    const parts = name.trim().split(/\s+/);
+    if (parts.length === 1) return parts[0].slice(0, 2).toUpperCase();
+    return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+  };
+
   // Close user dropdown if clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -278,7 +285,7 @@ export const Header = () => {
                     {currentUser.avatarUrl ? (
                       <img src={currentUser.avatarUrl} alt={currentUser.name} className="w-full h-full object-cover" />
                     ) : (
-                      'AM'
+                      getInitials(currentUser.name)
                     )}
                   </div>
                   <div className="min-w-0 flex-1">

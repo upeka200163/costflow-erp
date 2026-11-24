@@ -31,9 +31,23 @@ import { useApp } from '../context/AppContext';
 import { api } from '../services/api';
 
 export const DashboardPage = () => {
-  const { setActiveTab } = useApp();
+  const { setActiveTab, currentUser } = useApp();
   const [data, setData] = useState(null);
   const [timeRange, setTimeRange] = useState('Last 30 Days');
+
+  // Dynamic greeting: Extract first name or prefix + name (e.g., "Ahmed" from "Ahmed Mohamed")
+  const getGreetingName = (fullName) => {
+    if (!fullName) return 'Ahmed';
+    const trimmed = fullName.trim();
+    const parts = trimmed.split(/\s+/);
+    if (parts.length <= 1) return parts[0] || 'Ahmed';
+    if (['dr.', 'dr', 'eng.', 'eng', 'mr.', 'mr', 'ms.', 'ms', 'mrs.', 'mrs', 'prof.', 'prof'].includes(parts[0].toLowerCase())) {
+      return `${parts[0]} ${parts[1]}`;
+    }
+    return parts[0];
+  };
+
+  const greetingName = getGreetingName(currentUser?.name);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -75,7 +89,7 @@ export const DashboardPage = () => {
       <div className="relative overflow-hidden bg-gradient-to-r from-blue-50/80 via-white to-blue-50/50 rounded-3xl p-6 sm:p-8 border border-blue-100/60 shadow-xs flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
         <div className="relative z-10 space-y-1.5 max-w-xl">
           <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight flex items-center gap-2">
-            Welcome back, Ahmed <span className="inline-block animate-wave text-2xl">👋</span>
+            Welcome back, <span title={currentUser?.name || 'Ahmed'}>{greetingName}</span> <span className="inline-block animate-wave text-2xl">👋</span>
           </h1>
           <p className="text-sm font-medium text-slate-500">
             Here's what's happening in your factory today.
