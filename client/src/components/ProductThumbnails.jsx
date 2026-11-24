@@ -117,64 +117,64 @@ export const WaterPackIcon = ({ className = 'w-10 h-10' }) => {
 };
 
 // PET Preform Thumbnail
-export const PreformIcon = ({ alert = false, className = 'w-10 h-10' }) => {
+export const PreformIcon = ({ alert = false, className = 'w-11 h-11' }) => {
   const src = alert ? ORIGINAL_IMAGES.matPreformAlert : ORIGINAL_IMAGES.matPreform;
 
   return (
-    <div className={`relative flex items-center justify-center p-1 bg-gradient-to-b from-slate-50 to-blue-50 rounded-xl border border-slate-200/80 shadow-2xs overflow-hidden shrink-0 ${className}`}>
+    <div className={`relative flex items-center justify-center p-1.5 bg-white rounded-xl border border-slate-200/90 shadow-2xs overflow-hidden shrink-0 transition-all hover:border-blue-300 hover:shadow-xs ${className}`}>
       <img
         src={src}
         alt="PET Preform"
-        className="h-full w-full object-contain filter drop-shadow-sm"
+        className="h-full w-full object-contain filter drop-shadow-xs transition-transform hover:scale-105"
       />
     </div>
   );
 };
 
 // Bottle Caps Thumbnail
-export const BottleCapsIcon = ({ alert = false, className = 'w-10 h-10' }) => {
+export const BottleCapsIcon = ({ alert = false, className = 'w-11 h-11' }) => {
   const src = alert ? ORIGINAL_IMAGES.matCapsAlert : ORIGINAL_IMAGES.matCaps;
 
   return (
-    <div className={`relative flex items-center justify-center p-1 bg-gradient-to-b from-blue-50 to-indigo-50 rounded-xl border border-blue-100 shadow-2xs overflow-hidden shrink-0 ${className}`}>
+    <div className={`relative flex items-center justify-center p-1.5 bg-white rounded-xl border border-slate-200/90 shadow-2xs overflow-hidden shrink-0 transition-all hover:border-blue-300 hover:shadow-xs ${className}`}>
       <img
         src={src}
         alt="Bottle Caps"
-        className="h-full w-full object-contain filter drop-shadow-sm"
+        className="h-full w-full object-contain filter drop-shadow-xs transition-transform hover:scale-105"
       />
     </div>
   );
 };
 
 // Labels Roll Thumbnail
-export const LabelsRollIcon = ({ className = 'w-10 h-10' }) => (
-  <div className={`relative flex items-center justify-center p-1 bg-gradient-to-b from-amber-50 to-orange-50 rounded-xl border border-amber-100 shadow-2xs overflow-hidden shrink-0 ${className}`}>
+export const LabelsRollIcon = ({ className = 'w-11 h-11' }) => (
+  <div className={`relative flex items-center justify-center p-1.5 bg-white rounded-xl border border-slate-200/90 shadow-2xs overflow-hidden shrink-0 transition-all hover:border-blue-300 hover:shadow-xs ${className}`}>
     <img
       src={ORIGINAL_IMAGES.matLabels}
       alt="Labels"
-      className="h-full w-full object-contain filter drop-shadow-sm"
+      className="h-full w-full object-contain filter drop-shadow-xs transition-transform hover:scale-105"
     />
   </div>
 );
 
 // Shrink Film Thumbnail
-export const ShrinkFilmIcon = ({ className = 'w-10 h-10' }) => (
-  <div className={`relative flex items-center justify-center p-1 bg-gradient-to-b from-slate-50 to-sky-50 rounded-xl border border-slate-200 shadow-2xs overflow-hidden shrink-0 ${className}`}>
+export const ShrinkFilmIcon = ({ className = 'w-11 h-11' }) => (
+  <div className={`relative flex items-center justify-center p-1.5 bg-white rounded-xl border border-slate-200/90 shadow-2xs overflow-hidden shrink-0 transition-all hover:border-blue-300 hover:shadow-xs ${className}`}>
     <img
       src={ORIGINAL_IMAGES.matFilm}
       alt="Shrink Film"
-      className="h-full w-full object-contain filter drop-shadow-sm"
+      className="h-full w-full object-contain filter drop-shadow-xs transition-transform hover:scale-105"
     />
   </div>
 );
 
 // Water Treatment / Chemicals Thumbnail
-export const ChemicalDrumIcon = ({ className = 'w-10 h-10' }) => (
-  <div className={`relative flex items-center justify-center p-1 bg-gradient-to-b from-cyan-50 to-blue-50 rounded-xl border border-cyan-100 shadow-2xs overflow-hidden shrink-0 ${className}`}>
+export const ChemicalDrumIcon = ({ className = 'w-11 h-11' }) => (
+  <div className={`relative flex items-center justify-center p-1.5 bg-white rounded-xl border border-slate-200/90 shadow-2xs overflow-hidden shrink-0 transition-all hover:border-blue-300 hover:shadow-xs ${className}`}>
     <img
       src={ORIGINAL_IMAGES.matChemical}
       alt="Water Treatment Materials"
-      className="h-full w-full object-contain filter drop-shadow-sm"
+      className="h-full w-full object-contain filter drop-shadow-xs transition-transform hover:scale-105"
     />
   </div>
 );

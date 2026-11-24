@@ -183,11 +183,11 @@ export const RawMaterialsPage = () => {
 
   const renderMaterialIcon = (mat) => {
     const name = mat.name.toLowerCase();
-    if (name.includes('preform')) return <PreformIcon className="w-9 h-11" />;
-    if (name.includes('caps')) return <BottleCapsIcon className="w-10 h-10" />;
-    if (name.includes('label')) return <LabelsRollIcon className="w-10 h-10" />;
-    if (name.includes('film')) return <ShrinkFilmIcon className="w-10 h-10" />;
-    return <ChemicalDrumIcon className="w-9 h-10" />;
+    if (name.includes('preform')) return <PreformIcon className="w-11 h-11" />;
+    if (name.includes('caps')) return <BottleCapsIcon className="w-11 h-11" />;
+    if (name.includes('label')) return <LabelsRollIcon className="w-11 h-11" />;
+    if (name.includes('film')) return <ShrinkFilmIcon className="w-11 h-11" />;
+    return <ChemicalDrumIcon className="w-11 h-11" />;
   };
 
   const filteredMaterials = materials.filter((m) => {
@@ -339,7 +339,7 @@ export const RawMaterialsPage = () => {
             {/* Alert Card 1: PET Preform */}
             <div className="p-3.5 rounded-2xl border border-slate-100 bg-slate-50/50 flex items-center justify-between gap-3">
               <div className="flex items-center gap-3">
-                <PreformIcon alert className="w-10 h-10" />
+                <PreformIcon alert className="w-12 h-12" />
                 <div>
                   <h4 className="text-xs font-bold text-slate-800">PET Preform</h4>
                   <p className="text-[11px] text-slate-400 mt-0.5">
@@ -358,7 +358,7 @@ export const RawMaterialsPage = () => {
             {/* Alert Card 2: Bottle Caps */}
             <div className="p-3.5 rounded-2xl border border-slate-100 bg-slate-50/50 flex items-center justify-between gap-3">
               <div className="flex items-center gap-3">
-                <BottleCapsIcon alert className="w-10 h-10" />
+                <BottleCapsIcon alert className="w-12 h-12" />
                 <div>
                   <h4 className="text-xs font-bold text-slate-800">Bottle Caps</h4>
                   <p className="text-[11px] text-slate-400 mt-0.5">
