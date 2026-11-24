@@ -193,11 +193,13 @@ export const ProductsPage = () => {
           </div>
         </div>
 
-        {/* Ambient Water Splash Illustration on the Right */}
-        <div className="hidden md:flex items-center gap-3 opacity-80 pointer-events-none">
-          <WaterBottleIcon size="330 ml" className="w-10 h-12 rotate-[-6deg]" />
-          <WaterBottleIcon size="600 ml" className="w-12 h-16" />
-          <WaterBottleIcon size="1.5 L" className="w-14 h-20 rotate-[6deg]" />
+        {/* Ambient Water Splash Illustration on the Right matching Image 2 */}
+        <div className="hidden md:flex items-center justify-end h-28 pointer-events-none">
+          <img
+            src="/images/original/products-banner.png"
+            alt="Bottled Water Range"
+            className="h-full w-auto max-w-xs object-contain filter drop-shadow-md"
+          />
         </div>
       </div>
 

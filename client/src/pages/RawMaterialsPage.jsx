@@ -339,7 +339,7 @@ export const RawMaterialsPage = () => {
             {/* Alert Card 1: PET Preform */}
             <div className="p-3.5 rounded-2xl border border-slate-100 bg-slate-50/50 flex items-center justify-between gap-3">
               <div className="flex items-center gap-3">
-                <PreformIcon className="w-10 h-12" />
+                <PreformIcon alert className="w-10 h-10" />
                 <div>
                   <h4 className="text-xs font-bold text-slate-800">PET Preform</h4>
                   <p className="text-[11px] text-slate-400 mt-0.5">
@@ -358,7 +358,7 @@ export const RawMaterialsPage = () => {
             {/* Alert Card 2: Bottle Caps */}
             <div className="p-3.5 rounded-2xl border border-slate-100 bg-slate-50/50 flex items-center justify-between gap-3">
               <div className="flex items-center gap-3">
-                <BottleCapsIcon className="w-10 h-11" />
+                <BottleCapsIcon alert className="w-10 h-10" />
                 <div>
                   <h4 className="text-xs font-bold text-slate-800">Bottle Caps</h4>
                   <p className="text-[11px] text-slate-400 mt-0.5">

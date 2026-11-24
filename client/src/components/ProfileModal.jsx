@@ -21,8 +21,8 @@ import { useApp } from '../context/AppContext';
 const PRESET_AVATARS = [
   {
     id: 'preset-ahmed',
-    name: 'Ahmed Mohamed (Manager)',
-    url: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80',
+    name: 'Ahmed Mohamed (Manager - Original)',
+    url: '/images/original/avatar-ahmed.png',
     fallbackBg: 'from-blue-600 to-indigo-600',
   },
   {

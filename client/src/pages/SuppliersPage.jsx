@@ -25,6 +25,7 @@ import {
 } from 'lucide-react';
 import { KpiCard } from '../components/KpiCard';
 import { SupplierModal } from '../components/SupplierModal';
+import { SupplierLogo } from '../components/ProductThumbnails';
 import { api } from '../services/api';
 import { useApp } from '../context/AppContext';
 
@@ -284,33 +285,7 @@ export const SuppliersPage = () => {
   };
 
   const renderSupplierIcon = (supplier) => {
-    const cat = supplier.category?.toLowerCase() || '';
-    if (cat.includes('plastic')) {
-      return (
-        <div className="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center shrink-0">
-          <Globe className="w-4 h-4" />
-        </div>
-      );
-    }
-    if (cat.includes('pack')) {
-      return (
-        <div className="w-8 h-8 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0">
-          <Leaf className="w-4 h-4" />
-        </div>
-      );
-    }
-    if (cat.includes('chem')) {
-      return (
-        <div className="w-8 h-8 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center shrink-0">
-          <Droplets className="w-4 h-4" />
-        </div>
-      );
-    }
-    return (
-      <div className="w-8 h-8 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center shrink-0">
-        <Cog className="w-4 h-4" />
-      </div>
-    );
+    return <SupplierLogo supplier={supplier} />;
   };
 
   const filteredSuppliers = suppliers.filter((s) => {
@@ -636,11 +611,7 @@ export const SuppliersPage = () => {
 
                 {/* Profile Header */}
                 <div className="flex flex-col items-center text-center space-y-2 pt-2">
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-tr from-blue-500 to-cyan-400 p-0.5 shadow-md flex items-center justify-center">
-                    <div className="w-full h-full rounded-full bg-white flex items-center justify-center text-blue-600">
-                      <Globe className="w-8 h-8" />
-                    </div>
-                  </div>
+                  <SupplierLogo supplier={selectedSupplier} large={true} />
                   <div>
                     <h3 className="text-base font-extrabold text-slate-900">{selectedSupplier.name}</h3>
                     <p className="text-xs text-slate-400 font-medium">{selectedSupplier.subtitle}</p>

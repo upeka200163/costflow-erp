@@ -429,15 +429,12 @@ export const DashboardPage = () => {
           <div className="space-y-4">
             {/* Bottling Line Visual Preview */}
             <div className="flex items-center gap-3">
-              <div className="w-16 h-12 rounded-xl bg-slate-900 overflow-hidden shrink-0 flex items-center justify-center border border-slate-200">
-                <svg viewBox="0 0 100 60" className="w-full h-full opacity-80" fill="none">
-                  <rect width="100" height="60" fill="#0F172A" />
-                  <path d="M0 45H100" stroke="#334155" strokeWidth="4" />
-                  {[15, 35, 55, 75].map((x) => (
-                    <rect key={x} x={x} y="15" width="12" height="28" rx="2" fill="#38BDF8" opacity="0.85" />
-                  ))}
-                  <circle cx="50" cy="10" r="4" fill="#10B981" />
-                </svg>
+              <div className="w-16 h-12 rounded-xl bg-slate-100 overflow-hidden shrink-0 flex items-center justify-center border border-slate-200 shadow-2xs">
+                <img
+                  src="/images/original/order-po1025.png"
+                  alt="Order #PO-1025"
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div className="overflow-hidden">
                 <h4 className="text-xs font-bold text-slate-800 truncate">Order #PO-1025</h4>

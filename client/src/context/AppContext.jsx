@@ -16,7 +16,7 @@ const DEFAULT_USER = {
   twoFactorEnabled: true,
   emailAlerts: true,
   isLoggedIn: true,
-  avatarUrl: null, // null = default SVG avatar, or data URL / image URL
+  avatarUrl: '/images/original/avatar-ahmed.png', // Original photo from Image 1
 };
 
 export const AppProvider = ({ children }) => {
@@ -31,7 +31,14 @@ export const AppProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(() => {
     try {
       const saved = localStorage.getItem('costflow_user');
-      if (saved) return { ...DEFAULT_USER, ...JSON.parse(saved) };
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        return {
+          ...DEFAULT_USER,
+          ...parsed,
+          avatarUrl: parsed.avatarUrl || '/images/original/avatar-ahmed.png',
+        };
+      }
     } catch (e) {}
     return DEFAULT_USER;
   });
@@ -76,9 +83,9 @@ export const AppProvider = ({ children }) => {
   const removeProfilePhoto = () => {
     setCurrentUser((prev) => ({
       ...prev,
-      avatarUrl: null,
+      avatarUrl: '/images/original/avatar-ahmed.png',
     }));
-    showToast('Profile photo reset to default avatar.');
+    showToast('Profile photo reset to original photo.');
   };
 
   const switchRole = (newRole, newTitle) => {
