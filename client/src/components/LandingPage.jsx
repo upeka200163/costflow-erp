@@ -20,8 +20,8 @@ export const LandingPage = ({ onComplete }) => {
   const [isFading, setIsFading] = useState(false);
 
   useEffect(() => {
-    const totalDuration = 2800; // 2.8 seconds total
-    const intervalTime = 40;
+    const totalDuration = 5500; // ~5.5 seconds total display
+    const intervalTime = 30;
     const increment = 100 / (totalDuration / intervalTime);
 
     const timer = setInterval(() => {
@@ -35,35 +35,40 @@ export const LandingPage = ({ onComplete }) => {
       });
     }, intervalTime);
 
-    // Status text transitions over the 2.8 seconds
+    // Dynamic status text transitions across the 5.5 seconds
     const status1 = setTimeout(() => {
-      setStatusText('Connecting to Water Factory #1 Telemetry & Line 1...');
-    }, 700);
+      setStatusText('Connecting to Water Factory #1 Telemetry & High-Speed Bottling Lines...');
+    }, 1200);
 
     const status2 = setTimeout(() => {
-      setStatusText('Auditing BOM Recipes, PET Inventory & Resin Costs...');
-    }, 1500);
+      setStatusText('Auditing BOM Recipes, PET Preform Inventories & Resin Costs...');
+    }, 2500);
 
     const status3 = setTimeout(() => {
+      setStatusText('Syncing Production Orders, Quality Assurance & Live ERP Metrics...');
+    }, 3800);
+
+    const status4 = setTimeout(() => {
       const greetingName = currentUser?.name?.split(' ')[0] || 'Ahmed';
       setStatusText(`Welcome back, ${greetingName}. Transitioning to Dashboard...`);
-    }, 2200);
+    }, 4800);
 
     // Fade out slightly before complete for seamless dissolve
     const fadeTimer = setTimeout(() => {
       setIsFading(true);
-    }, 2500);
+    }, 5100);
 
-    // Transition completion
+    // Transition completion (approx 5.6 seconds)
     const completeTimer = setTimeout(() => {
       onComplete();
-    }, 2900);
+    }, 5600);
 
     return () => {
       clearInterval(timer);
       clearTimeout(status1);
       clearTimeout(status2);
       clearTimeout(status3);
+      clearTimeout(status4);
       clearTimeout(fadeTimer);
       clearTimeout(completeTimer);
     };
@@ -205,7 +210,9 @@ export const LandingPage = ({ onComplete }) => {
               style={{ width: `${progress}%` }}
             />
           </div>
-          <p className="text-[10px] text-slate-500">Auto-transitioning to factory operations in ~2 seconds...</p>
+          <p className="text-[10px] text-slate-500">
+            Auto-transitioning to factory operations in ~{Math.max(1, Math.ceil((5500 - (progress / 100) * 5500) / 1000))}s...
+          </p>
         </div>
       </main>
 
