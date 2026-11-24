@@ -14,6 +14,7 @@ import {
   Building2,
   Layers,
   ShieldCheck,
+  Sparkles,
 } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 
@@ -46,7 +47,7 @@ export const ProductionIcon = ({ className = 'w-4 h-4' }) => (
 );
 
 export const Sidebar = () => {
-  const { activeTab, setActiveTab } = useApp();
+  const { activeTab, setActiveTab, setShowLanding } = useApp();
   const [isProductionExpanded, setIsProductionExpanded] = useState(false);
 
   const navItems = [
@@ -152,14 +153,24 @@ export const Sidebar = () => {
 
       {/* Footer Factory Info Card */}
       <div className="p-4 border-t border-slate-800/60">
-        <div className="bg-[#131f38] rounded-xl p-3 flex items-center gap-3 border border-slate-700/50 shadow-inner">
-          <div className="w-9 h-9 rounded-lg bg-blue-600/20 text-blue-400 flex items-center justify-center shrink-0">
-            <Building2 className="w-5 h-5" />
+        <div className="bg-[#131f38] rounded-xl p-3 flex items-center justify-between border border-slate-700/50 shadow-inner">
+          <div className="flex items-center gap-3 min-w-0">
+            <div className="w-9 h-9 rounded-lg bg-blue-600/20 text-blue-400 flex items-center justify-center shrink-0">
+              <Building2 className="w-5 h-5" />
+            </div>
+            <div className="overflow-hidden">
+              <h4 className="text-white text-xs font-semibold leading-snug truncate">Water Factory #1</h4>
+              <p className="text-[10px] text-slate-400 font-mono">v1.2.0 • ISO 22000</p>
+            </div>
           </div>
-          <div className="overflow-hidden">
-            <h4 className="text-white text-xs font-semibold leading-snug">Water Factory #1</h4>
-            <p className="text-[10px] text-slate-400 font-mono">v1.2.0 • ISO 22000</p>
-          </div>
+          <button
+            type="button"
+            onClick={() => setShowLanding(true)}
+            className="p-1.5 hover:bg-slate-700/60 rounded-lg text-slate-400 hover:text-cyan-400 transition-colors shrink-0"
+            title="Replay Welcome Landing Showcase"
+          >
+            <Sparkles className="w-3.5 h-3.5" />
+          </button>
         </div>
       </div>
     </aside>

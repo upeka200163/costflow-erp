@@ -18,6 +18,7 @@ import { CostCalculationPage } from './pages/CostCalculationPage';
 import { SalesPage } from './pages/SalesPage';
 import { ReportsPage } from './pages/ReportsPage';
 import { SettingsPage } from './pages/SettingsPage';
+import { LandingPage } from './components/LandingPage';
 import { useApp } from './context/AppContext';
 import { CheckCircle2, AlertTriangle, Info } from 'lucide-react';
 
@@ -33,6 +34,8 @@ function AppContent() {
     setIsAccountSettingsOpen,
     isLogoutModalOpen,
     setIsLogoutModalOpen,
+    showLanding,
+    setShowLanding,
   } = useApp();
 
   const renderActivePage = () => {
@@ -70,6 +73,11 @@ function AppContent() {
 
   return (
     <div className="min-h-screen flex bg-[#f0f4f9] text-slate-800">
+      {/* Intro Landing Showcase (2 to 3 seconds auto-transition) */}
+      {showLanding && (
+        <LandingPage onComplete={() => setShowLanding(false)} />
+      )}
+
       {/* Sidebar */}
       <Sidebar />
 

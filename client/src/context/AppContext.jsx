@@ -21,6 +21,7 @@ const DEFAULT_USER = {
 };
 
 export const AppProvider = ({ children }) => {
+  const [showLanding, setShowLanding] = useState(true);
   const [activeTab, setActiveTab] = useState('dashboard');
   const [searchQuery, setSearchQuery] = useState('');
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -164,6 +165,8 @@ export const AppProvider = ({ children }) => {
         setIsLogoutModalOpen,
         toast,
         showToast,
+        showLanding,
+        setShowLanding,
       }}
     >
       {children}
