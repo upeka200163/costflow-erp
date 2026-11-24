@@ -101,10 +101,27 @@ const fs = require('fs');
 // Serve frontend build if dist exists or in production
 const clientBuildPath = path.join(__dirname, '../../client/dist');
 if (fs.existsSync(clientBuildPath) || process.env.NODE_ENV === 'production' || process.env.SERVE_CLIENT === 'true') {
-  app.use(express.static(clientBuildPath));
+  app.use(express.static(clientBuildPath, {
+    setHeaders: (res, filePath) => {
+      if (filePath.endsWith('.js') || filePath.endsWith('.mjs') || filePath.endsWith('.jsx')) {
+        res.setHeader('Content-Type', 'application/javascript; charset=UTF-8');
+      } else if (filePath.endsWith('.css')) {
+        res.setHeader('Content-Type', 'text/css; charset=UTF-8');
+      }
+    }
+  }));
 
+  // Handle SPA routing - only serve index.html for navigation routes (not static file requests)
   app.get('*', (req, res) => {
-    res.sendFile(path.join(clientBuildPath, 'index.html'));
+    if (path.extname(req.path)) {
+      return res.status(404).send('Asset not found');
+    }
+    const indexPath = path.join(clientBuildPath, 'index.html');
+    if (fs.existsSync(indexPath)) {
+      res.sendFile(indexPath);
+    } else {
+      res.status(404).send('CostFlow frontend build not found. Please run npm run build.');
+    }
   });
 }
 
