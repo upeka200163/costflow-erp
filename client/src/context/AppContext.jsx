@@ -3,6 +3,22 @@ import { api } from '../services/api';
 
 const AppContext = createContext();
 
+const DEFAULT_USER = {
+  name: 'Ahmed Mohamed',
+  title: 'Factory Manager',
+  email: 'ahmed.mohamed@waterfactory.eg',
+  phone: '+20 10 1234 5678',
+  employeeId: 'EMP-4892',
+  department: 'Plant Operations & Manufacturing',
+  plant: '10th Industrial Zone Plant #1 (Cairo)',
+  role: 'Factory Manager',
+  shift: 'Shift A (07:00 - 15:30)',
+  twoFactorEnabled: true,
+  emailAlerts: true,
+  isLoggedIn: true,
+  avatarUrl: null, // null = default SVG avatar, or data URL / image URL
+};
+
 export const AppProvider = ({ children }) => {
   const [activeTab, setActiveTab] = useState('dashboard');
   const [searchQuery, setSearchQuery] = useState('');
@@ -11,21 +27,20 @@ export const AppProvider = ({ children }) => {
   const [notificationCount, setNotificationCount] = useState(3);
   const [isCostSheetOpen, setIsCostSheetOpen] = useState(false);
 
-  // User Profile & Account State
-  const [currentUser, setCurrentUser] = useState({
-    name: 'Ahmed Mohamed',
-    title: 'Factory Manager',
-    email: 'ahmed.mohamed@waterfactory.eg',
-    phone: '+20 10 1234 5678',
-    employeeId: 'EMP-4892',
-    department: 'Plant Operations & Manufacturing',
-    plant: '10th Industrial Zone Plant #1 (Cairo)',
-    role: 'Factory Manager',
-    shift: 'Shift A (07:00 - 15:30)',
-    twoFactorEnabled: true,
-    emailAlerts: true,
-    isLoggedIn: true,
+  // User Profile with localStorage persistence
+  const [currentUser, setCurrentUser] = useState(() => {
+    try {
+      const saved = localStorage.getItem('costflow_user');
+      if (saved) return { ...DEFAULT_USER, ...JSON.parse(saved) };
+    } catch (e) {}
+    return DEFAULT_USER;
   });
+
+  useEffect(() => {
+    try {
+      localStorage.setItem('costflow_user', JSON.stringify(currentUser));
+    } catch (e) {}
+  }, [currentUser]);
 
   // Account Modals State
   const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
@@ -48,6 +63,22 @@ export const AppProvider = ({ children }) => {
       ...updatedData,
     }));
     showToast('Profile information updated successfully!');
+  };
+
+  const updateProfilePhoto = (newPhotoUrl) => {
+    setCurrentUser((prev) => ({
+      ...prev,
+      avatarUrl: newPhotoUrl,
+    }));
+    showToast('Profile photo updated successfully!');
+  };
+
+  const removeProfilePhoto = () => {
+    setCurrentUser((prev) => ({
+      ...prev,
+      avatarUrl: null,
+    }));
+    showToast('Profile photo reset to default avatar.');
   };
 
   const switchRole = (newRole, newTitle) => {
@@ -111,6 +142,8 @@ export const AppProvider = ({ children }) => {
         setIsCostSheetOpen,
         currentUser,
         updateUserProfile,
+        updateProfilePhoto,
+        removeProfilePhoto,
         switchRole,
         switchPlant,
         handleLogout,

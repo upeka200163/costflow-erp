@@ -22,8 +22,12 @@ export const LogoutModal = ({ isOpen, onClose }) => {
         </div>
 
         <div className="p-3 bg-slate-50 rounded-2xl border border-slate-100 flex items-center gap-3 text-xs">
-          <div className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold">
-            A
+          <div className="w-9 h-9 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold overflow-hidden shrink-0">
+            {currentUser.avatarUrl ? (
+              <img src={currentUser.avatarUrl} alt={currentUser.name} className="w-full h-full object-cover" />
+            ) : (
+              'A'
+            )}
           </div>
           <div className="min-w-0 flex-1">
             <h4 className="font-bold text-slate-800 truncate">{currentUser.name}</h4>
@@ -75,13 +79,17 @@ export const SessionLockOverlay = () => {
         </div>
 
         <div className="p-4 rounded-2xl bg-slate-50 border border-slate-100 flex items-center gap-3 text-left">
-          <div className="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold shrink-0">
-            AM
+          <div className="w-12 h-12 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold shrink-0 overflow-hidden shadow-sm">
+            {currentUser.avatarUrl ? (
+              <img src={currentUser.avatarUrl} alt={currentUser.name} className="w-full h-full object-cover" />
+            ) : (
+              'AM'
+            )}
           </div>
           <div className="min-w-0 flex-1">
-            <h4 className="text-xs font-bold text-slate-900 truncate">Ahmed Mohamed</h4>
-            <p className="text-[11px] text-slate-500 font-medium">Factory Operations Manager</p>
-            <span className="text-[10px] text-emerald-600 font-bold block">10th Industrial Zone Plant #1</span>
+            <h4 className="text-xs font-bold text-slate-900 truncate">{currentUser.name}</h4>
+            <p className="text-[11px] text-slate-500 font-medium">{currentUser.title}</p>
+            <span className="text-[10px] text-emerald-600 font-bold block">{currentUser.plant}</span>
           </div>
         </div>
 

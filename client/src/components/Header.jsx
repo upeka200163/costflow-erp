@@ -18,8 +18,7 @@ import {
   Building2,
   LogOut,
   ChevronDown,
-  Layers,
-  ArrowRight,
+  Camera,
 } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 
@@ -232,7 +231,7 @@ export const Header = () => {
           )}
         </div>
 
-        {/* Interactive User Profile Section */}
+        {/* Interactive User Profile Section with Dynamic Avatar */}
         <div className="relative" ref={userMenuRef}>
           <button
             onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
@@ -240,13 +239,21 @@ export const Header = () => {
             aria-expanded={isUserMenuOpen}
           >
             <div className="relative">
-              <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-blue-600 to-indigo-500 p-0.5 shadow-sm">
+              <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-blue-600 to-indigo-500 p-0.5 shadow-sm overflow-hidden shrink-0">
                 <div className="w-full h-full rounded-full bg-white flex items-center justify-center font-bold text-blue-600 text-xs overflow-hidden">
-                  <svg viewBox="0 0 40 40" className="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="40" height="40" fill="#E2E8F0" />
-                    <circle cx="20" cy="15" r="7" fill="#64748B" />
-                    <path d="M8 36C8 29.3726 13.3726 24 20 24C26.6274 24 32 29.3726 32 36" fill="#64748B" />
-                  </svg>
+                  {currentUser.avatarUrl ? (
+                    <img
+                      src={currentUser.avatarUrl}
+                      alt={currentUser.name}
+                      className="w-full h-full object-cover rounded-full"
+                    />
+                  ) : (
+                    <svg viewBox="0 0 40 40" className="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <rect width="40" height="40" fill="#E2E8F0" />
+                      <circle cx="20" cy="15" r="7" fill="#64748B" />
+                      <path d="M8 36C8 29.3726 13.3726 24 20 24C26.6274 24 32 29.3726 32 36" fill="#64748B" />
+                    </svg>
+                  )}
                 </div>
               </div>
               <div className="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-500 ring-2 ring-white animate-pulse" />
@@ -267,8 +274,12 @@ export const Header = () => {
               {/* Account Card Header */}
               <div className="p-3 rounded-2xl bg-gradient-to-tr from-slate-900 via-slate-800 to-blue-950 text-white space-y-2 mb-2">
                 <div className="flex items-center gap-2.5">
-                  <div className="w-10 h-10 rounded-full bg-blue-600 text-white font-bold flex items-center justify-center ring-2 ring-white/30 shrink-0">
-                    AM
+                  <div className="w-10 h-10 rounded-full bg-blue-600 text-white font-bold flex items-center justify-center ring-2 ring-white/30 shrink-0 overflow-hidden">
+                    {currentUser.avatarUrl ? (
+                      <img src={currentUser.avatarUrl} alt={currentUser.name} className="w-full h-full object-cover" />
+                    ) : (
+                      'AM'
+                    )}
                   </div>
                   <div className="min-w-0 flex-1">
                     <h4 className="font-bold text-sm leading-tight truncate">{currentUser.name}</h4>
@@ -297,8 +308,8 @@ export const Header = () => {
                     <User className="w-4 h-4" />
                   </div>
                   <div className="flex-1">
-                    <span className="block leading-tight">My Profile</span>
-                    <span className="text-[10px] text-slate-400 font-normal">View & edit employee identity</span>
+                    <span className="block leading-tight">My Profile & Photo</span>
+                    <span className="text-[10px] text-slate-400 font-normal">Change photo, title & phone</span>
                   </div>
                 </button>
 
