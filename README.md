@@ -1,114 +1,185 @@
 # 💧 CostFlow - Manufacturing Cost Management ERP
 
-> A clean, polished, and professional enterprise web application for water bottling factories and manufacturing plants, replicating the modern executive dashboard and inventory control interfaces.
+[![Production Status](https://img.shields.io/badge/Status-Production%20Ready-brightgreen?style=for-the-badge&logo=checkmarx)](https://github.com)
+[![Tech Stack](https://img.shields.io/badge/Stack-React%2018%20%7C%20Tailwind%20%7C%20Vite%20%7C%20Node%20%7C%20Express%20%7C%20MongoDB-blue?style=for-the-badge&logo=react)](https://reactjs.org)
+[![Cloud Deployment](https://img.shields.io/badge/Deploy-Render%20%2B%20MongoDB%20Atlas-4353ff?style=for-the-badge&logo=render)](https://render.com)
+[![Compliance](https://img.shields.io/badge/Quality-ISO%2022000%20%2F%20Codex%20Stan%20227-emerald?style=for-the-badge)](https://www.iso.org)
 
-![Dashboard Preview](https://img.shields.io/badge/Status-Production%20Ready-brightgreen?style=for-the-badge)
-![Tech Stack](https://img.shields.io/badge/Stack-React%20%7C%20Tailwind%20%7C%20Recharts%20%7C%20Node%20%7C%20Express%20%7C%20MongoDB-blue?style=for-the-badge)
-![Deployment](https://img.shields.io/badge/Deploy-Render%20%2B%20MongoDB%20Atlas-purple?style=for-the-badge)
-
----
-
-## 📸 Replicated Interfaces & Features
-
-### 1. Executive Factory Dashboard
-- **Welcome Hero Section**: Personalized greeting (*"Welcome back, Ahmed 👋"*) with ambient high-speed water bottling conveyor visuals.
-- **5 High-Level KPI Summary Cards**:
-  - **Total Production**: `125,000` (+8% vs last week)
-  - **Manufacturing Cost**: `178,750 EGP` (+5% Total this period)
-  - **Cost Per Unit**: `1.43 EGP` (-2% Avg. cost)
-  - **Expected Profit**: `68,750 EGP` (+12% This period)
-  - **Inventory Value**: `420,000 EGP` (+6% Total stock)
-- **Analytics & Trends**:
-  - **Production Overview**: Interactive Recharts spline line chart showing production output vs targets over 30 days.
-  - **Cost Breakdown**: Recharts Donut chart displaying the exact 4-part breakdown centered on `1.43 EGP Per Unit` (Raw Materials 48%, Direct Labor 22%, Machines & Power 15%, Overheads 15%).
-  - **Top Products**: Quick list of highest-volume formats (`1.5 L`, `600 ml`, `330 ml`) with unit costs and factory share badges.
-- **Operations & Alerts**:
-  - **Recent Activities Timeline**: Timestamped events for completed production runs, raw material receiving, and sales dispatches.
-  - **Alerts & Notifications**: Real-time alerts for low PET preform stocks, waste rate variances, and machine maintenance.
-  - **Active Production Status**: Live run card for **Order #PO-1025** (*Water Bottle - 600 ml*) showing 78% progress (7,850 produced / 10,000 planned / 2,150 remaining).
+**CostFlow** is a modern, high-performance web application and Manufacturing Execution System (MES) designed specifically for commercial bottled water production, beverage plants, and packaging facilities. Replicated to pixel perfection from modern enterprise ERP dashboards, it unifies direct material costing, real-time BOM roll-ups, high-speed bottling line monitoring, vendor purchasing, and laboratory quality compliance.
 
 ---
 
-### 2. Products Management
-- **Hero Banner**: Product statistics with water bottle graphic styling.
-- **4 KPI Metric Cards**: Total Products (`5`), Avg. Production Cost (`1.48 EGP`), Avg. Selling Price (`2.20 EGP`), Total Production Value (`820,000 EGP`).
-- **Toolbar & Filtering**:
-  - `+ Add New Product` button opening modal with complete cost parameters.
-  - Category dropdown filter (*All Categories*, *Bottled Water*, *Small Pack*, *Pack*).
-  - Status dropdown filter (*All Status*, *Active*, *Inactive*).
-  - Search input with real-time text matching.
-  - View mode switch: Toggle between sleek Table List view and Grid Cards view.
-- **Data Table**: Columns for `#`, `Product Name`, `Image Render`, `Category Badge`, `Size / Unit`, `Production Cost (EGP)`, `Selling Price (EGP)`, `Status`, and Actions (`View`, `Edit`, `Delete`).
+## 🌟 Key Modules & Features
+
+### 1. Executive Factory Dashboard (Image 1)
+* **Personalized Greeting**: Dynamic welcome greeting (*"Welcome back, Ahmed 👋"*) with live first-name synchronization and ambient high-speed conveyor visuals.
+* **5 Executive KPI Cards**:
+  * **Total Production**: `125,000` (+8% vs last week)
+  * **Manufacturing Cost**: `178,750 EGP` (+5% Total this period)
+  * **Cost Per Unit**: `1.43 EGP` (-2% Avg. cost)
+  * **Expected Profit**: `68,750 EGP` (+12% This period)
+  * **Inventory Value**: `420,000 EGP` (+6% Total stock)
+* **Production Overview Chart**: Interactive Recharts spline chart comparing actual 30-day throughput against production targets.
+* **Cost Breakdown Donut**: Recharts visualization dissecting the exact per-unit cost structure:
+  * Raw Materials: `48%` (0.69 EGP)
+  * Direct Labor: `22%` (0.31 EGP)
+  * Machines & Electricity: `15%` (0.22 EGP)
+  * Overheads: `15%` (0.21 EGP)
+* **Top Products Matrix**: Performance table tracking unit costs and plant sales share for `1.5 L` (32%), `600 ml` (28%), and `330 ml` (25%) formats.
+* **Operations Feed & Active Order Card**: Timestamped activity logs, critical material notifications, and real-time progress for **Order #PO-1025** (*Water Bottle 600 ml* at 78% completion).
 
 ---
 
-### 3. Raw Materials & Stock Monitoring
-- **Hero Banner**: Real-time stock control and threshold alerts with `+ Add New Material` quick action.
-- **4 KPI Metric Cards**: Total Materials (`12`), Total Stock Value (`415,000 EGP`), Low Stock Items (`2 - Needs Attention`), Total Consumption (`285,000 Units`).
-- **Material Consumption Trend**: Interactive Recharts smooth Area chart tracking 6-month historical raw material usage (May - Oct).
-- **Interactive Low Stock Alerts**: Dedicated alert cards for *PET Preform* (5,000 pcs left / 10,000 min) and *Bottle Caps* (8,000 pcs left / 15,000 min) with quick 1-click **Reorder Soon** buttons.
-- **Registry Table**: PET Preforms, Bottle Caps, BOPP Labels, PE Shrink Film, Water Treatment Media, and filter cartridges with supplier associations and purchase prices.
+### 2. Products Management (Image 2)
+* **Executive Metrics**: Total Products (`5`), Average Production Cost (`1.48 EGP`), Average Selling Price (`2.20 EGP`), Total Production Value (`820,000 EGP`).
+* **Multi-View Modes**: Instant toggle between an **Informative Data Table** and responsive **Card Grid View**.
+* **Real-time Filtering & Search**: Instant filtering by category (*Bottled Water*, *Small Pack*, *Pack*) and status (*Active*, *Inactive*).
+* **Modal Operations**: Comprehensive dialog to add or edit SKUs, size specifications, direct labor allotments, and target profit margins.
 
 ---
 
-### 4. Suppliers & Procurement
-- **Hero Banner**: Vendor relationship and purchasing management with `+ Add New Supplier`.
-- **4 KPI Metric Cards**: Total Suppliers (`8`), Total Purchases (`1,250,000 EGP`), Average Order Value (`156,250 EGP`), Outstanding Balance (`120,500 EGP`).
-- **Split Screen Master-Detail Layout**:
-  - **Left Section (70% width)**: Comprehensive supplier registry with industrial zone addresses, phone & email contacts, supplied material tags, purchase totals, balances, and status badges.
-  - **Right Section (30% width)**: Interactive Supplier Details card for the selected vendor (e.g. *Global Plastic Co. - Plastic Solutions*) displaying quick contacts, location, total spend, and a chronological **Recent Purchases** list with order amounts.
-  - **Record Purchase Action**: Interactive modal to record new deliveries and update supplier balances in real time.
+### 3. Raw Materials & Stock Monitoring (Image 3)
+* **KPI Trackers**: Total Materials (`12`), Total Stock Value (`415,000 EGP`), Low Stock Items (`2 - Needs Attention`), Monthly Consumption (`285,000 Units`).
+* **Material Consumption Trend**: 6-month historical consumption Area chart (May – Oct) powered by Recharts.
+* **One-Click Low Stock Alerts**: Dedicated alert cards for *PET Preform* (5,000 pcs left / 10,000 min) and *Bottle Caps* (8,000 pcs left / 15,000 min) with instant **Reorder Soon** procurement dispatching.
+* **Procurement Table**: Real-time tracking of preforms, caps, printed labels, shrink film, and water purification chemicals.
 
 ---
 
-### 5. Additional Operational Modules
-- **Finished Goods Inventory**: Warehouse zone allocation (*Zone A Cold Clean*, *Zone B Pallet Staging*), reserved order tracking, lot numbers, and stock audit tools.
-- **Production Orders & Lines**: Monitoring high-speed automated bottling lines (`Line 1 - 12,000 BPH`), line waste tracking, operator assignment, and batch output simulation.
-- **Cost Calculation Engine**: Interactive simulation tool where adjusting resin prices, preform weight, cap cost, power consumption, direct labor, and margin targets recalculates unit costs and recommended selling prices in real time.
-- **Sales & Distribution**: Logistics dispatch, truck driver assignments, client delivery manifests.
-- **Reports & Analytics**: One-click downloadable financial, scrap, and margin audit reports.
-- **Global Search**: System-wide shortcut `Ctrl + K` to search across products, raw materials, suppliers, and production orders instantly.
+### 4. Suppliers & Procurement (Image 4)
+* **Procurement KPIs**: Total Suppliers (`8`), Total Purchases (`1,250,000 EGP`), Average Order Value (`156,250 EGP`), Outstanding Balance (`120,500 EGP`).
+* **Master-Detail Split View**:
+  * **Left (70%)**: Full vendor directory with contact info, supplied materials, purchase volumes, and AP balances.
+  * **Right (30%)**: Dedicated **Supplier Details** inspector for the selected vendor (e.g. *Global Plastic Co.*) with historical purchase orders.
+* **Purchase Recording Modal**: Dialog to log incoming invoices, update ledger balances, and record invoice numbers.
 
 ---
 
-## 🛠 Tech Stack
-
-| Layer | Technologies |
-|---|---|
-| **Frontend** | React 18, Vite, Tailwind CSS, Recharts, Lucide Icons |
-| **Backend** | Node.js, Express REST API, Morgan logging, CORS |
-| **Database** | MongoDB Atlas (Production) / Mongoose / Built-in In-Memory fallback |
-| **Deployment** | Render (Free Web Service) + MongoDB Atlas (Free M0 Cluster) |
+### 5. Advanced Manufacturing Extensions
+* **Interactive BOM Studio**: Bill of Materials tree decomposing each bottle into PET grammage, HDPE closures, BOPP labels, wrap film, and water treatment reagents.
+* **Quality Control Laboratory**: In-line water testing parameters adhering to **Egyptian Standard ES 1588** and **Codex Stan 227-2001** (TDS, pH, Ozone residual, Turbidity, Microbiological assay).
+* **Production Kanban & Lines**: Real-time visual tracking of bottling lines (*Line 1 High-Speed Automated 12,000 BPH*) across 5 stages from Planned Queue to Palletized.
+* **Cost Simulation & Resin Sensitivity**: Break-even calculator and sensitivity model that computes the impact of virgin PET resin price swings on net unit margins.
+* **Printable Cost Audit Sheet**: Clean, formal print-ready document with official verification stamps, cost rolls, and signatures.
+* **Interactive Database Inspector**: Located under **Settings**, allowing live inspection of all MongoDB collections, document counts, and raw JSON.
+* **User Account & Identity Hub**:
+  * Top navigation profile trigger with real-time name synchronization.
+  * Custom photo upload from disk and curated executive avatar presets.
+  * Security modal with 2FA toggles, session PIN lock, and role switcher (*Factory Manager*, *Operations Director*, *QC Auditor*).
 
 ---
 
-## 🚀 Quick Start (Local Development)
+## 📸 Original Photographic & Brand Assets
+
+All generic SVG vector placeholders have been replaced with the original high-resolution photographic imagery extracted directly from the interface designs:
+
+```
+client/public/images/original/
+├── avatar-ahmed.png              # Factory Manager profile photo (from Image 1 header)
+├── dashboard-conveyor.png         # Bottling line conveyor hero banner (from Image 1)
+├── order-po1025.png               # High-speed bottling line thumbnail (from Image 1)
+├── products-banner.png            # Water splash and 4-bottle hero lineup (from Image 2)
+├── prod-wb600.png                 # Water Bottle (600 ml) photographic thumbnail
+├── prod-wb330.png                 # Water Bottle (330 ml) photographic thumbnail
+├── prod-wb1500.png                # Water Bottle (1.50 L) photographic thumbnail
+├── prod-cup200.png                # Water Cup (200 ml) photographic thumbnail
+├── prod-pack6.png                 # Water Pack (6 pcs) photographic thumbnail
+├── mat-preform.png                # PET Preform test-tube preform thumbnail
+├── mat-preform-alert.png          # High-res PET Preform alert thumbnail
+├── mat-caps.png                   # Blue bottle caps thumbnail
+├── mat-caps-alert.png             # High-res bottle caps alert thumbnail
+├── mat-labels.png                 # Printed label roll thumbnail
+├── mat-film.png                   # Clear polyethylene shrink film roll thumbnail
+├── mat-chemical.png               # Water treatment chemical containers thumbnail
+├── supp-globalplastic.png         # Global Plastic Co. brand logo
+├── supp-globalplastic-large.png   # Global Plastic Co. circular details logo
+├── supp-packtech.png              # PackTech green leaf technology logo
+├── supp-purewater.png             # Pure Water Co. water droplet logo
+├── supp-industrial.png            # Industrial Supplies gear logo
+└── supp-smartpack.png             # Smart Packaging carton logo
+```
+
+---
+
+## 🛠 Tech Stack & Architecture
+
+```
+                      ┌────────────────────────────────────────┐
+                      │          React 18 + Vite (SPA)         │
+                      │  Tailwind CSS • Recharts • Lucide      │
+                      └───────────────────┬────────────────────┘
+                                          │ HTTP / REST APIs
+                                          ▼
+                      ┌────────────────────────────────────────┐
+                      │          Node.js + Express API         │
+                      │    Port 5000 (Local) / PORT (Render)   │
+                      └───────────────────┬────────────────────┘
+                                          │
+                  ┌───────────────────────┴───────────────────────┐
+                  ▼                                               ▼
+     ┌────────────────────────┐                     ┌───────────────────────────┐
+     │ MongoDB Atlas (Remote) │                     │ In-Memory Document Store  │
+     │   when MONGODB_URI set │                     │  Universal Fallback Mode  │
+     └────────────────────────┘                     └───────────────────────────┘
+```
+
+* **Frontend**: React 18, Vite 6, Tailwind CSS 3, Recharts 2, Lucide React icons.
+* **Backend**: Node.js, Express 4, Mongoose 8, Morgan, CORS.
+* **Database**: MongoDB Atlas / Local MongoDB with universal fallback in-memory document adapter (`dbAdapter.js`).
+* **Deployment**: Render Blueprint (`render.yaml`) + MongoDB Atlas Free Tier (`M0`).
+
+---
+
+## 📡 REST API Reference
+
+| Method | Endpoint | Description |
+|:---:|:---|:---|
+| `GET` | `/api/dashboard` | Aggregated factory KPIs, production chart data, cost donut, and recent activity |
+| `GET` | `/api/products` | Retrieve product catalog with optional `search`, `category`, and `status` filters |
+| `POST` | `/api/products` | Create a new finished product SKU |
+| `PUT` | `/api/products/:id` | Update product costs, pricing, or status |
+| `DELETE` | `/api/products/:id` | Remove a product from the registry |
+| `GET` | `/api/materials` | Retrieve raw materials, stock quantities, and 6-month consumption trend |
+| `POST` | `/api/materials/:id/reorder` | Quick dispatch reorder for low stock items |
+| `GET` | `/api/suppliers` | Retrieve suppliers directory with balances and recent purchase history |
+| `POST` | `/api/suppliers/:id/purchases` | Record an incoming purchase delivery and invoice |
+| `GET` | `/api/production` | Active production orders, bottling line speeds, and Kanban statuses |
+| `POST` | `/api/calculation/simulate` | Dynamic unit cost recalculation based on custom resin/power/labor parameters |
+| `GET` | `/api/database` | Complete database overview dumping all collections, document counts, and records |
+| `GET` | `/api/health` | Service uptime and deployment diagnostics |
+
+---
+
+## 🚀 Getting Started (Local Development)
 
 ### Prerequisites
-- Node.js >= 18.0.0
-- npm >= 9.0.0
+* **Node.js**: `v18.0.0` or higher
+* **npm**: `v9.0.0` or higher
 
-### 1. Clone & Install Dependencies
+### 1. Installation
 ```bash
 # Clone the repository
 git clone https://github.com/your-username/aquaops-erp.git
 cd aquaops-erp
 
-# Install root, server, and client dependencies
+# Install all dependencies across root, server, and client
 npm run install:all
 ```
 
 ### 2. Configure Environment (Optional)
-Create `server/.env` (optional, server defaults to port 5000 and internal in-memory database):
+Create a `.env` file inside the `server/` directory:
 ```env
 PORT=5000
 NODE_ENV=development
+
+# Optional: MongoDB Atlas connection string
+# If omitted, the server runs seamlessly using its built-in in-memory document store
 MONGODB_URI=mongodb+srv://<username>:<password>@cluster0.mongodb.net/costflow?retryWrites=true&w=majority
 ```
 
-### 3. Run Development Servers
+### 3. Start Development Servers
 ```bash
-# Starts Express API (Port 5000) and Vite Dev Server (Port 3000) concurrently:
+# Starts both Express backend (Port 5000) and Vite frontend (Port 3000) concurrently:
 npm run dev
 ```
 
@@ -116,69 +187,78 @@ Open your browser at **`http://localhost:3000`**.
 
 ---
 
-## ☁️ Deployment Guide (Render & MongoDB Atlas Free Live Demo)
+## ☁️ Free Live Demo Deployment (Render + MongoDB Atlas)
 
-The project includes a ready-to-use **`render.yaml`** configuration for 1-click deployment on Render's free tier.
+CostFlow is pre-configured for **1-click free deployment** using Render and MongoDB Atlas:
 
-### Step 1: Create Free MongoDB Atlas Cluster
-1. Sign up at [MongoDB Atlas](https://www.mongodb.com/cloud/atlas).
-2. Create an **M0 Free** cluster in any region.
-3. In **Database Access**, create a user with read/write permissions.
-4. In **Network Access**, add `0.0.0.0/0` (Allow Access from Anywhere).
-5. Copy your connection string (`mongodb+srv://<user>:<password>@.../costflow?retryWrites=true&w=majority`).
+### Step 1: Set up MongoDB Atlas (Free M0 Cluster)
+1. Sign up at [mongodb.com/cloud/atlas](https://www.mongodb.com/cloud/atlas).
+2. Create an **M0 Free** cluster named `Cluster0`.
+3. In **Network Access**, add `0.0.0.0/0` (Allow Access from Anywhere).
+4. In **Database Access**, create a user with read/write privileges.
+5. Click **Connect** > **Drivers** > Copy your connection string (`mongodb+srv://...`).
 
-### Step 2: Deploy to Render
-1. Push this repository to GitHub or GitLab.
-2. In [Render Dashboard](https://dashboard.render.com/), click **New +** > **Blueprint**.
+### Step 2: Deploy on Render
+1. Push your repository to GitHub or GitLab.
+2. In the [Render Dashboard](https://dashboard.render.com/), click **New +** > **Blueprint**.
 3. Select your repository. Render automatically reads `render.yaml`.
 4. Enter your `MONGODB_URI` environment variable when prompted.
-5. Click **Apply**. Render will run:
+5. Click **Apply**. Render will automatically build the client and start the production web service:
    ```bash
-   npm run install:all && npm run build
+   npm run build
    npm start
    ```
-6. Your live web application will be accessible at `https://costflow-erp.onrender.com`.
 
-> 💡 **Self-Contained Fallback**: If you deploy without providing `MONGODB_URI`, the server detects the missing cloud connection and runs in standalone demo mode using its built-in in-memory document store. The live demo will never fail to start or crash!
-
-For detailed screenshots and manual configuration steps, see [DEPLOYMENT.md](DEPLOYMENT.md).
+> 💡 **Self-Contained Live Demo**: If `MONGODB_URI` is not provided, the application automatically launches in standalone demo mode with all baseline products, materials, and suppliers seeded in its built-in in-memory document store. It will never crash or fail to start.
 
 ---
 
-## 📁 Project Structure
+## ⌨️ Shortcuts & Pro Tips
+
+| Shortcut / Action | Function |
+|:---|:---|
+| <kbd>Ctrl</kbd> + <kbd>K</kbd> | Open system-wide **Global Quick Search** |
+| **Top Right User Card** | Opens **User Profile**, **Account Settings**, and **Role Switcher** |
+| **Settings > Database** | Live in-app **MongoDB Database Inspector** with JSON viewer |
+| **Reorder Soon** | Instantly replenishes low-stock PET preforms and bottle caps |
+| **Print Icon (Header)** | Opens official **NFSA Cost Audit Sheet** formatted for print/PDF export |
+
+---
+
+## 📁 Repository Structure
 
 ```
 aquaops-erp/
-├── client/                     # Frontend (React 18 + Vite + Tailwind CSS)
-│   ├── public/                 # Favicon and static icons
+├── client/                          # React + Vite frontend application
+│   ├── public/
+│   │   └── images/original/         # Extracted original photographic & brand assets
 │   ├── src/
-│   │   ├── components/         # Reusable UI widgets, Sidebar, Header, Modals, Thumbnails
-│   │   ├── context/            # App state (search, active tab, toasts)
-│   │   ├── pages/              # Dashboard, Products, RawMaterials, Suppliers, Inventory, etc.
-│   │   ├── services/           # REST API client with offline fallback
-│   │   ├── App.jsx             # Main application layout
-│   │   ├── index.css           # Tailwind directives & design tokens
-│   │   └── main.jsx            # Entry point
-│   ├── index.html              # HTML template
-│   ├── tailwind.config.js      # Palette extension (brand, navy, slate)
-│   └── vite.config.js          # Vite config & API proxy
-├── server/                     # Backend (Node.js + Express + MongoDB)
+│   │   ├── components/              # Sidebar, Header, Modals, Thumbnails, KPI Cards
+│   │   ├── context/                 # AppContext (user profile, search, active tabs)
+│   │   ├── pages/                   # Dashboard, Products, RawMaterials, Suppliers, Settings, etc.
+│   │   ├── services/                # REST API client with offline fallback
+│   │   ├── App.jsx                  # Main view orchestration
+│   │   ├── index.css                # Tailwind directives & design tokens
+│   │   └── main.jsx                 # Client entry point
+│   ├── index.html                   # HTML document template
+│   └── vite.config.js               # Vite build config & local proxy
+├── server/                          # Node.js + Express backend application
 │   ├── src/
-│   │   ├── config/             # Database connection & universal in-memory fallback adapter
-│   │   ├── data/               # Initial seed dataset matching the 4 images
-│   │   ├── models/             # Product, RawMaterial, Supplier, ProductionOrder schemas
-│   │   ├── routes/             # REST API route handlers
-│   │   ├── scripts/            # Database auto-seeder
-│   │   └── index.js            # Express app entry & static build serving
-│   ├── package.json
-│   └── .env.example
-├── DEPLOYMENT.md               # Step-by-step guide for Render & Atlas
-├── render.yaml                 # Render Blueprint configuration
-├── package.json                # Root package scripts
-└── README.md                   # Project documentation
+│   │   ├── config/                  # Mongoose connection & in-memory database adapter
+│   │   ├── data/                    # Seed dataset matching the original interfaces
+│   │   ├── models/                  # Product, RawMaterial, Supplier, ProductionOrder schemas
+│   │   ├── routes/                  # REST route controllers
+│   │   ├── scripts/                 # Baseline database auto-seeder
+│   │   └── index.js                 # Express server & static SPA hosting
+│   ├── .env.example                 # Environment template
+│   └── package.json                 # Server dependencies & scripts
+├── DEPLOYMENT.md                    # Detailed step-by-step deployment guide
+├── render.yaml                      # Render Blueprint automation spec
+├── package.json                     # Root orchestrator scripts
+└── README.md                        # Documentation
 ```
 
 ---
 
 ## 📄 License
-This project is licensed under the ISC License.
+This project is open-source and available under the [ISC License](LICENSE).

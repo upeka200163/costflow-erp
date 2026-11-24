@@ -5,7 +5,6 @@ import {
   Boxes,
   Users,
   Warehouse,
-  Factory,
   Calculator,
   Truck,
   FileBarChart2,
@@ -17,6 +16,34 @@ import {
   ShieldCheck,
 } from 'lucide-react';
 import { useApp } from '../context/AppContext';
+
+// Sleek, modern manufacturing bottling & assembly line icon
+export const ProductionIcon = ({ className = 'w-4 h-4' }) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.8"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+  >
+    {/* Bottling / Assembly Conveyor Track */}
+    <path d="M2 17h20" />
+    <path d="M5 17v3" />
+    <path d="M19 17v3" />
+    <circle cx="6" cy="17" r="1.5" />
+    <circle cx="12" cy="17" r="1.5" />
+    <circle cx="18" cy="17" r="1.5" />
+    {/* Bottles moving along the production line */}
+    <path d="M5 8h2v6H5z" />
+    <path d="M11 6h2v8h-2z" />
+    <path d="M17 8h2v6h-2z" />
+    <path d="M6 5v3" />
+    <path d="M12 3v3" />
+    <path d="M18 5v3" />
+  </svg>
+);
 
 export const Sidebar = () => {
   const { activeTab, setActiveTab } = useApp();
@@ -32,7 +59,7 @@ export const Sidebar = () => {
     {
       id: 'production',
       label: 'Production',
-      icon: Factory,
+      icon: ProductionIcon,
       hasSubmenu: true,
       subItems: [
         { id: 'production', label: 'Production Kanban' },
